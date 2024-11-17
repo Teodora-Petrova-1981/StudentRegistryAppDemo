@@ -26,6 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Fix Mocha Permissions
+      run: chmod +x ./node_modules/.bin/mocha
     - run: npm install
     - run: nohup node server.js > /dev/null 2>&1 &
     - run: npm test
